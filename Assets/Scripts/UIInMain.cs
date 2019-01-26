@@ -13,7 +13,10 @@ public class UIInMain : MonoBehaviour {
     public Image e2;
     public Transform environment;
     public Transform playerCutscene;
-    public Transform player;
+    public Transform flower;
+    public Transform mask1;
+    public Transform mask2;
+    public PlayerController player;
 
     Animator playerCutsceneAnim;
     Animator playerAnim;
@@ -44,6 +47,7 @@ public class UIInMain : MonoBehaviour {
         }
         title.gameObject.SetActive(false);
         environment.gameObject.SetActive(false);
+        flower.gameObject.SetActive(false);
         wasd.gameObject.SetActive(false);
         e.gameObject.SetActive(false);
         e2.gameObject.SetActive(false);
@@ -91,21 +95,29 @@ public class UIInMain : MonoBehaviour {
             srs[i].material.DOFade(1, fadeTime);
         }
         playerCutsceneAnim.SetTrigger("Start");
+        mask1.gameObject.SetActive(true);
     }
 
     public void InputCutScene1()
     {
-        SetActiveShow(e);
-        canE = true;
+        flower.GetComponent<SpriteRenderer>().material.DOFade(0, 0).OnComplete(()=> {
+            flower.gameObject.SetActive(true);
+            flower.GetComponent<SpriteRenderer>().material.DOFade(1, fadeTime).OnComplete(() => {
+                SetActiveShow(e);
+                canE = true;
+            });
+        });
     }
 
-    public void Cutscene2()
+    public void Cutscene2()//getup
     {
         playerCutsceneAnim.SetTrigger("GetUp");
     }
 
     public void InputCutScene2()//get up end
     {
+        mask1.gameObject.SetActive(false);
+        mask2.gameObject.SetActive(true);
         SetActiveShow(wasd);
         player.gameObject.SetActive(true);
         playerCutscene.gameObject.SetActive(false);
@@ -116,11 +128,22 @@ public class UIInMain : MonoBehaviour {
     public void Cutscene3()//title
     {
         playerAnim.SetTrigger("FetchTrigger");
+        player.Active = false;
+        player.SetFlipX(true);
         for (int i = 0; i < srs.Length; i++)
         {
             srs[i].material.DOFade(0, fadeTime);
         }
-        player.GetComponent<SpriteRenderer>().material.DOFade(0, fadeTime).OnComplete(()=>SetActiveShow(title));
+        flower.GetComponent<SpriteRenderer>().material.DOFade(0, fadeTime * 2);
+        player.GetComponent<SpriteRenderer>().material.DOFade(0, fadeTime*2).OnComplete(()=>
+        {
+            title.DOFade(0.3f, 0).OnComplete(() => {
+                title.gameObject.SetActive(true);
+                title.DOFade(1, fadeTime);
+                GameCtrl.instance.ChangeScene("Level1", 5);
+                player.Active = true;
+            });
+        });
     }
 
     public void OnFlowerTrigger()
@@ -144,10 +167,6 @@ public class UIInMain : MonoBehaviour {
     void SetActiveHide(Image img)
     {
         img.DOFade(0, fadeTime).OnComplete(() => img.gameObject.SetActive(false));
-    }
-
-    void SetAllActive(bool active)
-    {
     }
 }
 
