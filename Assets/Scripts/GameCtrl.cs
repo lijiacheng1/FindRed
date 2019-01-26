@@ -25,9 +25,9 @@ public class GameCtrl : MonoBehaviour {
     {
        mask = this.transform.Find("Mask").gameObject.GetComponent<SpriteRenderer>();
     }
-    public void Test()
+    public void ChangeScene(string sceneName,float time)
     {
-        StartCoroutine(ChangeSceneAnim("Start", 1));
+        StartCoroutine(ChangeSceneAnim(sceneName, time));
     }
 
     //闪烁白光，同时加载场景,第一个参数为加载的场景名，第二个参数为白光闪烁的时间，总时间为*2
