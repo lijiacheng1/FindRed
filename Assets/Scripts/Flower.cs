@@ -2,31 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Flower : MonoBehaviour/*, InteractivityObject*/
-{
-    //bool isInit = false;
-    //public int PressE()
-    //{
-    //    return (int)GameCtrl.ObjectList.flower;
-    //}
+public class Flower : MonoBehaviour,InteractivityObject{
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	}
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public int PressE()
     {
-        //if (isInit)
-            UIInMain.instacne.OnFlowerTrigger();
+        return (int)GameCtrl.ObjectList.Flower;
     }
-
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    isInit = true;
-    //}
 }

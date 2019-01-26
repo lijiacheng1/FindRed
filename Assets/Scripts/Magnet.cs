@@ -10,8 +10,12 @@ public class Magnet : MonoBehaviour{
     private float dist;
     private Animator anim;
     //判断是否已经跑到目的地了
-    private bool run;
-    public Vector3[] runPath= {new Vector3(0.7371982f, 1.076728f,0),new Vector3(-0.5184425f, 1.808175f,0),new Vector3(-3.834565f, -0.9172503f,0)};
+    private bool runEnd;
+    private bool running;
+    private int runIndex=0;
+    //
+    public SoundCtrl sounds;
+    public Vector3[] runPath= new Vector3[5]{new Vector3(0, 0, 0), new Vector3(3.57f, -1.5f, 0),new Vector3(-0.98f, 1.04f, 0), new Vector3(-2.31f, 0.66f, 0), new Vector3(-3.834565f, -0.9172503f,0)};
     private void Start()
     {
         playTr = PlayerController.instance.GetComponent<Transform>();
@@ -24,20 +28,27 @@ public class Magnet : MonoBehaviour{
         
         if (dist <= 1)
         {
-            if (run == false)
+            if (runEnd == false && !running)
             {
-                run = true;
+                if (runIndex == runPath.Length - 1)
+                {
+                    runEnd = true;
+                }
+                running = true;
                 anim.SetBool("Run", true);
                 RunAway();
             }
         }
-        if (tr.position == runPath[runPath.Length-1])
+        if (tr.position == runPath[runIndex])
         {
+            running = false;
             anim.SetBool("Run", false);
         }
     }
     private void RunAway()
     {
-        transform.DOPath(runPath,5f);
+        runIndex += 1;
+        transform.DOPath(new Vector3[] { runPath[runIndex]},3f);
+        GameCtrl.instance.PlayMusic(new Vector3(0, 0, 0), sounds.musicList[3]);
     }
 }

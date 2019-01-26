@@ -7,7 +7,7 @@ public class WindIndicator : MonoBehaviour
 {
     //本身位置、magnetMan位置
     private Transform tr;
-    public Transform magnetTr;
+    private Transform magnetTr;
     private GameObject image;
 
     private void Start()

@@ -10,7 +10,8 @@ public class GameCtrl : MonoBehaviour {
     {
         Null,
         Magent,
-        flower,
+        Flower,
+        Stamp,
     }
     //实现白色遮挡的图片
     private Image mask;
@@ -36,6 +37,16 @@ public class GameCtrl : MonoBehaviour {
     public void ChangeScene(string sceneName,float time)
     {
         StartCoroutine(ChangeSceneAnim(sceneName, time));
+    }
+    //播放音乐
+    public void PlayMusic(Vector3 pos, AudioClip music)
+    {
+        GameObject soundObj = new GameObject("Music");
+        soundObj.transform.position = pos;
+        AudioSource audiosource = soundObj.AddComponent<AudioSource>();
+        audiosource.clip = music;
+        audiosource.Play();
+        Destroy(soundObj, music.length);
     }
 
     //闪烁白光，同时加载场景,第一个参数为加载的场景名，第二个参数为白光闪烁的时间，总时间为*2

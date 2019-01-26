@@ -18,10 +18,11 @@ public class PlayerController : MonoBehaviour
     public static PlayerController instance = null;
     //按E的提示
     public Image pressHint;
-    //记录手中的物体、
+    //记录手中的物体、是否可以按。速度变量
     public int holdObject;
     private bool canPress = false;
     private Collider2D colliderRem;
+    public float speed=1;
 
     public bool Active
     {
@@ -79,11 +80,19 @@ public class PlayerController : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    holdObject = colliderRem.GetComponent<InteractivityObject>().PressE();
-                    if (holdObject != 0)
+                    isWalking = false;
+                }
+                //如果CanPress为True，此时可以点击E进行交互
+                if (canPress)
+                {
+                    if (Input.GetKeyDown(KeyCode.E))
                     {
-                        colliderRem.transform.SetParent(handPoint);
-                        colliderRem.transform.localPosition = Vector3.zero;
+                        holdObject = colliderRem.GetComponent<InteractivityObject>().PressE();
+                        if (holdObject != 0)
+                        {
+                            colliderRem.transform.SetParent(handPoint);
+                            colliderRem.transform.localPosition = Vector3.zero;
+                        }
                     }
                 }
             }

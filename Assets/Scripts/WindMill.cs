@@ -10,7 +10,7 @@ public class WindMill : MonoBehaviour {
     public Magnet magnetMan;
     private Transform magnetTr;
     private bool rotate = false;
-
+    public SoundCtrl sounds;
     private float timer;
     private float cycle=1;
     private void Start()
@@ -22,7 +22,8 @@ public class WindMill : MonoBehaviour {
     {
         if(magnetTr.position == magnetMan.runPath[magnetMan.runPath.Length-1])
         {
-             rotate = true;
+            rotate = true;
+            GameCtrl.instance.PlayMusic(new Vector3(0, 0, 0), sounds.musicList[8]);
         }
         if(rotate == true)
         {
