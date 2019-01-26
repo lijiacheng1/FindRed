@@ -3,10 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-
     Rigidbody2D rig;
+    public static PlayerController instance = null;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
 	// Use this for initialization
-	void Start () {
+    void Start () {
         rig = GetComponent<Rigidbody2D>();
 	}
 	
