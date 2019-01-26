@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour {
     bool sleepCryTrigger = false;
 
     public static PlayerController instance = null;
+    public int HoldObject;
 
     private void Awake()
     {

@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameCtrl : MonoBehaviour {
+
+    public enum ObjectList
+    {
+        Null,
+        Magent
+    }
     //实现白色遮挡的图片
     private Image mask;
     //单例模式

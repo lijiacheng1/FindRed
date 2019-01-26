@@ -14,7 +14,6 @@ public class SceneObject : MonoBehaviour {
         playerTr = PlayerController.instance.GetComponent<Transform>();
         tr = GetComponent<Transform>();
     }
-
     private void Update()
     {
         var imageRot = playerTr.position - tr.position;
