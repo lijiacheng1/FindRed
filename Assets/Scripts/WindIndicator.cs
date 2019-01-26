@@ -3,22 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class SceneObject : MonoBehaviour {
+public class WindIndicator : MonoBehaviour
+{
     //本身位置、玩家位置
     private Transform tr;
-    private Transform playerTr;
-    public GameObject image;
+    public Transform magnetMan;
+    private GameObject image;
 
     private void Start()
     {
-        playerTr = PlayerController.instance.GetComponent<Transform>();
+        image = this.gameObject;
         tr = GetComponent<Transform>();
     }
     private void Update()
     {
-        var imageRot = playerTr.position - tr.position;
+        var imageRot = magnetMan.position - tr.position;
         var rotAngle = Math.Atan(imageRot.y / imageRot.x);
-        image.transform.rotation = Quaternion.Euler(0,(float)(rotAngle/Math.PI)*180, (float)(rotAngle / Math.PI) * 180);
-        Debug.Log(imageRot);
+        var transformation = (float)(1 / (1 + 2 * Math.Abs(Math.Sin(rotAngle))));
+        image.transform.localScale = new Vector3(transformation, 1, 1);
+        if (imageRot.x >= 0)
+        {
+            image.transform.rotation = Quaternion.Euler(0, 0, (float)(rotAngle / Math.PI) * 180 + 180);
+        }
+        else
+        {
+            image.transform.rotation = Quaternion.Euler(0, 0, (float)(rotAngle / Math.PI) * 180);
+        }
     }
 }
