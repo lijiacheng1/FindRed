@@ -61,9 +61,16 @@ public class PlayerController : MonoBehaviour
             anim.SetTrigger("sleepCryTrigger");
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay(Collider2D collision)
     {
-        collision.transform.SetParent(handPoint);
-        collision.transform.localPosition = Vector3.zero;
+        if (collision.GetComponent<Pickup>() != null)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                HoldObject = collision.GetComponent<Pickup>().PickupIt();
+                collision.transform.SetParent(handPoint);
+                collision.transform.localPosition = Vector3.zero;
+            }
+        }
     }
 }
