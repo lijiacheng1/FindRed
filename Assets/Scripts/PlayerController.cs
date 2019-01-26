@@ -17,10 +17,11 @@ public class PlayerController : MonoBehaviour
     public static PlayerController instance = null;
     //按E的提示
     public Image pressHint;
-    //记录手中的物体、
+    //记录手中的物体、是否可以按。速度变量
     public int holdObject;
     private bool canPress = false;
     private Collider2D colliderRem;
+    public float speed=1;
 
     private void Awake()
     {
@@ -51,7 +52,7 @@ public class PlayerController : MonoBehaviour
                 sr.flipX = false;
             else
                 sr.flipX = true;
-            rig.MovePosition((Vector2)transform.position + new Vector2(h * Time.deltaTime, v * Time.deltaTime));
+            rig.MovePosition((Vector2)transform.position + new Vector2(h * Time.deltaTime*speed, v * Time.deltaTime*speed));
             isWalking = true;
         }
         else

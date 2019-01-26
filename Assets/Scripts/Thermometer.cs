@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Thermometer : MonoBehaviour, InteractivityObject
 {
-    //
+    //百叶箱温度变化，改变树
     public Tree tree;
     private Animator anim;
-    private int pressCounter=0;
+    private bool canPress;
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -15,15 +15,16 @@ public class Thermometer : MonoBehaviour, InteractivityObject
     public void Open()
     {
         anim.SetBool("OpenBox", true);
+        canPress = true;
+
     }
     public int PressE()
     {
-        if (pressCounter <= 2)
+        if (canPress == true)
         {
-            pressCounter += 1;
-            tree.ChangeColor(pressCounter);
+            tree.ChangeColor();
+            anim.SetBool("Press", true);
         }
-        anim.SetInteger("PressCounter", pressCounter);
         return 0;
     }
 }

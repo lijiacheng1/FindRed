@@ -7,6 +7,7 @@ public class WindMill : MonoBehaviour {
     public Thermometer thermometer;
     //自身位置，磁铁人位置，是否开始旋转
     private Transform tr;
+    public Magnet magnetMan;
     private Transform magnetTr;
     private bool rotate = false;
 
@@ -19,9 +20,9 @@ public class WindMill : MonoBehaviour {
     }
     private void Update()
     {
-        if(magnetTr.position == new Vector3(0, 0, 0))
+        if(magnetTr.position == magnetMan.runPath[magnetMan.runPath.Length-1])
         {
-            rotate = true;
+             rotate = true;
         }
         if(rotate == true)
         {
