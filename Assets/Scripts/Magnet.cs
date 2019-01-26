@@ -2,15 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Magnet : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+public class Magnet : Pickup {
+    public override int PickupIt()
+    {
+        return (int)GameCtrl.ObjectList.Magent;
+    }
 }
