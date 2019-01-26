@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
-
+public class PlayerController : MonoBehaviour
+{
     Rigidbody2D rig;
     SpriteRenderer sr;
     Animator anim;
-    bool isWalking = false;
+    [SerializeField]
+    Transform handPoint;
 
-    //trigger
+    bool isWalking = false;
     bool sleepCryTrigger = false;
 
     public static PlayerController instance = null;
@@ -34,7 +35,6 @@ public class PlayerController : MonoBehaviour {
         anim = GetComponent<Animator>();
     }
 	
-	// Update is called once per frame
 	void Update () {
         var h = Input.GetAxis("Horizontal");
         var v =Input.GetAxis("Vertical");
@@ -58,5 +58,11 @@ public class PlayerController : MonoBehaviour {
         anim.SetBool("isWalking", isWalking);
         if (sleepCryTrigger)
             anim.SetTrigger("sleepCryTrigger");
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        collision.transform.SetParent(handPoint);
+        collision.transform.localPosition = Vector3.zero;
     }
 }
