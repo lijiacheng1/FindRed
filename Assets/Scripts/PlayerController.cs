@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
         {
             if (h > 0)
                 sr.flipX = false;
-            else
+            else if(h < 0)
                 sr.flipX = true;
             rig.MovePosition((Vector2)transform.position + new Vector2(h * Time.deltaTime, v * Time.deltaTime));
             isWalking = true;
