@@ -20,6 +20,7 @@ public class UIInMain : MonoBehaviour {
 
     bool canE = false;
     bool canWasd = false;
+    float fadeTime = 2f;
 
     private void Awake()
     {
@@ -38,11 +39,14 @@ public class UIInMain : MonoBehaviour {
         {
             srs[i].material.DOFade(0, 0);
         }
+        title.gameObject.SetActive(false);
         environment.gameObject.SetActive(false);
         wasd.gameObject.SetActive(false);
         e.gameObject.SetActive(false);
         player.gameObject.SetActive(false);
         playerCutscene.gameObject.SetActive(true);
+
+        Cutscene1();
     }
 
     // Update is called once per frame
@@ -50,34 +54,32 @@ public class UIInMain : MonoBehaviour {
         if (canE && Input.GetKeyDown(KeyCode.E))
         {
             canE = false;
-            e.gameObject.SetActive(false);
+            SetActiveHide(e);
             Cutscene2();
         }
         if (canWasd && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) ||
             Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D)))
         {
             canWasd = false;
-            wasd.gameObject.SetActive(false);
+            SetActiveHide(wasd);
             //Cutscene3();
         }
     }
 
     public void Cutscene1()
     {
-        title.DOFade(0, 1);
+        title.DOFade(0, fadeTime);
         environment.gameObject.SetActive(true);
         for (int i = 0; i < srs.Length; i++)
         {
-            srs[i].material.DOFade(1, 1);
+            srs[i].material.DOFade(1, fadeTime);
         }
         playerCutsceneAnim.SetTrigger("Start");
     }
 
     public void InputCutScene1()
     {
-        e.DOFade(0, 0);
-        e.gameObject.SetActive(true);
-        e.DOFade(1, 1);
+        SetActiveShow(e);
         canE = true;
     }
 
@@ -88,9 +90,7 @@ public class UIInMain : MonoBehaviour {
 
     public void InputCutScene2()//get up end
     {
-        wasd.DOFade(0, 0);
-        wasd.gameObject.SetActive(true);
-        wasd.DOFade(1, 1);
+        SetActiveShow(wasd);
         player.gameObject.SetActive(true);
         playerCutscene.gameObject.SetActive(false);
         canWasd = true;
@@ -104,5 +104,18 @@ public class UIInMain : MonoBehaviour {
     {
         GameCtrl.instance.ChangeScene("Level1", 1);
     }
+
+
+    public void SetActiveShow(Image img)
+    {
+        img.DOFade(0, 0).OnComplete(()=> img.gameObject.SetActive(true));
+        img.DOFade(1, fadeTime);
+    }
+
+    public void SetActiveHide(Image img)
+    {
+        img.DOFade(0, fadeTime).OnComplete(() => img.gameObject.SetActive(false));
+    }
+
 }
 
