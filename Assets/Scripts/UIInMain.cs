@@ -134,12 +134,13 @@ public class UIInMain : MonoBehaviour {
         {
             srs[i].material.DOFade(0, fadeTime);
         }
-        player.GetComponent<SpriteRenderer>().material.DOFade(0, fadeTime).OnComplete(()=>
+        flower.GetComponent<SpriteRenderer>().material.DOFade(0, fadeTime * 2);
+        player.GetComponent<SpriteRenderer>().material.DOFade(0, fadeTime*2).OnComplete(()=>
         {
-            title.DOFade(0, 0).OnComplete(() => {
+            title.DOFade(0.3f, 0).OnComplete(() => {
                 title.gameObject.SetActive(true);
                 title.DOFade(1, fadeTime);
-                GameCtrl.instance.ChangeScene("Level1", 4);
+                GameCtrl.instance.ChangeScene("Level1", 5);
                 player.Active = true;
             });
         });
