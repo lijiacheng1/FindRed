@@ -2,18 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
+    public static PlayerController instance = null;
 
     Rigidbody2D rig;
     SpriteRenderer sr;
     Animator anim;
-    bool isWalking = false;
 
-    //trigger
+    bool isWalking = false;
     bool sleepCryTrigger = false;
 
-	// Use this for initialization
-	void Start () {
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    void Start () {
         rig = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
