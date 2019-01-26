@@ -8,7 +8,7 @@ public abstract class Pickup : MonoBehaviour {
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.GetComponent<PlayerController>() != null&&collision.GetComponent<PlayerController>().HoldObject!=0)
+        if(collision.GetComponent<PlayerController>() != null&&collision.GetComponent<PlayerController>().HoldObject ==0)
         {
             pickupHint.gameObject.SetActive(true);
         }
