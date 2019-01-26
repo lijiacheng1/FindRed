@@ -1,2 +1,6 @@
 Library/
 Temp/
+.vs/
+obj/
+FindRed.sln
+Assembly-CSharp.csproj
