@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
         {
             isWalking = false;
         }
+        //拾起物体
         if (canPick)
         {
             if (Input.GetKeyDown(KeyCode.E))
