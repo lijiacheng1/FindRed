@@ -19,6 +19,5 @@ public class SceneObject : MonoBehaviour {
         var imageRot = playerTr.position - tr.position;
         var rotAngle = Math.Atan(imageRot.y / imageRot.x);
         image.transform.rotation = Quaternion.Euler(0,(float)(rotAngle/Math.PI)*180, (float)(rotAngle / Math.PI) * 180);
-        Debug.Log(imageRot);
     }
 }

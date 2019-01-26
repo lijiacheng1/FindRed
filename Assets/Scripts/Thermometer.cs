@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Thermometer : MonoBehaviour, InteractivityObject
 {
+    //
+    public Tree tree;
     private Animator anim;
     private int pressCounter=0;
     private void Start()
@@ -19,6 +21,7 @@ public class Thermometer : MonoBehaviour, InteractivityObject
         if (pressCounter <= 2)
         {
             pressCounter += 1;
+            tree.ChangeColor(pressCounter);
         }
         anim.SetInteger("PressCounter", pressCounter);
         return 0;

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,7 +15,12 @@ public class PlayerController : MonoBehaviour
     bool sleepCryTrigger = false;
 
     public static PlayerController instance = null;
-    public int HoldObject;
+    //按E的提示
+    public Image pressHint;
+    //记录手中的物体、
+    public int holdObject;
+    private bool canPress = false;
+    private Collider2D colliderRem;
 
     private void Awake()
     {
@@ -52,6 +58,19 @@ public class PlayerController : MonoBehaviour
         {
             isWalking = false;
         }
+        //如果CanPress为True，此时可以点击E进行交互
+        if (canPress)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                holdObject = colliderRem.GetComponent<InteractivityObject>().PressE();
+                if (holdObject != 0)
+                {
+                    colliderRem.transform.SetParent(handPoint);
+                    colliderRem.transform.localPosition = Vector3.zero;
+                }
+            }
+        }
     }
 
     private void LateUpdate()
@@ -61,17 +80,17 @@ public class PlayerController : MonoBehaviour
             anim.SetTrigger("sleepCryTrigger");
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    //可交互物体碰撞函数，改变CanPress值
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<Pickup>() != null && HoldObject == 0)
+        if (collision.GetComponent<InteractivityObject>() != null && holdObject == 0)
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                Debug.Log("jianqilai");
-                HoldObject = collision.GetComponent<Pickup>().PickupIt();
-                collision.transform.SetParent(handPoint);
-                collision.transform.localPosition = Vector3.zero;
-            }
+            canPress = true;
+            colliderRem = collision;
         }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        canPress = false;
     }
 }
