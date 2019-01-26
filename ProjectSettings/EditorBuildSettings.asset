@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/LJQDebug/Start.unity
+    guid: ff9a3dc3252f48e48bc32a843a633c85
+  - enabled: 1
+    path: Assets/LJQDebug/TestScene.unity
+    guid: 9aef935c5c0d24a49ab17dd56b54686b
   m_configObjects: {}
