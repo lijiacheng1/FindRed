@@ -2,10 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Magnet : Pickup {
+public class Magnet : MonoBehaviour{
 
-    public override int PickupIt()
-    {
-        return (int)GameCtrl.ObjectList.Magent;
-    }
 }
