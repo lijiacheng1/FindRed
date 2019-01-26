@@ -434,6 +434,7 @@ MonoBehaviour:
   e2: {fileID: 478395322}
   environment: {fileID: 2130037267}
   playerCutscene: {fileID: 1994580409}
+  flower: {fileID: 697545667}
   mask1: {fileID: 2014508122}
   mask2: {fileID: 693883035}
   player: {fileID: 1973171622}

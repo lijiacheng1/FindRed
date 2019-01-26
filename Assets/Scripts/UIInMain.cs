@@ -13,6 +13,7 @@ public class UIInMain : MonoBehaviour {
     public Image e2;
     public Transform environment;
     public Transform playerCutscene;
+    public Transform flower;
     public Transform mask1;
     public Transform mask2;
     public PlayerController player;
@@ -46,6 +47,7 @@ public class UIInMain : MonoBehaviour {
         }
         title.gameObject.SetActive(false);
         environment.gameObject.SetActive(false);
+        flower.gameObject.SetActive(false);
         wasd.gameObject.SetActive(false);
         e.gameObject.SetActive(false);
         e2.gameObject.SetActive(false);
@@ -98,8 +100,13 @@ public class UIInMain : MonoBehaviour {
 
     public void InputCutScene1()
     {
-        SetActiveShow(e);
-        canE = true;
+        flower.GetComponent<SpriteRenderer>().material.DOFade(0, 0).OnComplete(()=> {
+            flower.gameObject.SetActive(true);
+            flower.GetComponent<SpriteRenderer>().material.DOFade(1, fadeTime).OnComplete(() => {
+                SetActiveShow(e);
+                canE = true;
+            });
+        });
     }
 
     public void Cutscene2()//getup
@@ -122,7 +129,7 @@ public class UIInMain : MonoBehaviour {
     {
         playerAnim.SetTrigger("FetchTrigger");
         player.Active = false;
-        //player.SetFlipX(false);
+        player.SetFlipX(true);
         for (int i = 0; i < srs.Length; i++)
         {
             srs[i].material.DOFade(0, fadeTime);

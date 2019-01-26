@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Flower : MonoBehaviour/*, InteractivityObject*/
 {
-    bool isInit = false;
+    //bool isInit = false;
     //public int PressE()
     //{
     //    return (int)GameCtrl.ObjectList.flower;
@@ -21,13 +21,12 @@ public class Flower : MonoBehaviour/*, InteractivityObject*/
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isInit)
+        //if (isInit)
             UIInMain.instacne.OnFlowerTrigger();
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        isInit = true;
-    }
-
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    isInit = true;
+    //}
 }
