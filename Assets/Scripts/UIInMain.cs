@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class UIInMain : MonoBehaviour {
 
 	// Use this for initialization
@@ -13,4 +14,10 @@ public class UIInMain : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void LoadScene()
+    {
+        GameCtrl.instance.ChangeScene("Level1", 1);
+    }
 }
+
