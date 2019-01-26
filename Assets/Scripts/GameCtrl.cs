@@ -9,7 +9,8 @@ public class GameCtrl : MonoBehaviour {
     public enum ObjectList
     {
         Null,
-        Magent
+        Magent,
+        flower,
     }
     //实现白色遮挡的图片
     private Image mask;

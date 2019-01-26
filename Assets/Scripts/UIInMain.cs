@@ -10,15 +10,18 @@ public class UIInMain : MonoBehaviour {
     public Image title;
     public Image wasd;
     public Image e;
+    public Image e2;
     public Transform environment;
     public Transform playerCutscene;
     public Transform player;
 
     Animator playerCutsceneAnim;
+    Animator playerAnim;
     //Animator playerAnim;
     SpriteRenderer[] srs;
 
     bool canE = false;
+    bool canE2 = false;
     bool canWasd = false;
     float fadeTime = 2f;
 
@@ -33,7 +36,7 @@ public class UIInMain : MonoBehaviour {
     {
         srs = environment.GetComponentsInChildren<SpriteRenderer>();
         playerCutsceneAnim = playerCutscene.GetComponent<Animator>();
-        //playerAnim = player.GetComponent<Animator>();
+        playerAnim = player.GetComponent<Animator>();
 
         for (int i = 0; i < srs.Length; i++)
         {
@@ -43,12 +46,14 @@ public class UIInMain : MonoBehaviour {
         environment.gameObject.SetActive(false);
         wasd.gameObject.SetActive(false);
         e.gameObject.SetActive(false);
+        e2.gameObject.SetActive(false);
         player.gameObject.SetActive(false);
-        playerCutscene.gameObject.SetActive(true);
+        playerCutscene.gameObject.SetActive(false);
 
         Cutscene1();
     }
 
+    public bool test = false;
     // Update is called once per frame
     void Update () {
         if (canE && Input.GetKeyDown(KeyCode.E))
@@ -64,11 +69,22 @@ public class UIInMain : MonoBehaviour {
             SetActiveHide(wasd);
             //Cutscene3();
         }
+        if (canE2 && Input.GetKeyDown(KeyCode.E))
+        {
+            canE2 = false;
+            SetActiveHide(e2);
+            Cutscene3();
+        }
+        if (test)
+        {
+            test = false;
+            OnFlowerTrigger();
+        }
     }
 
     public void Cutscene1()
     {
-        title.DOFade(0, fadeTime);
+        playerCutscene.gameObject.SetActive(true);
         environment.gameObject.SetActive(true);
         for (int i = 0; i < srs.Length; i++)
         {
@@ -96,8 +112,21 @@ public class UIInMain : MonoBehaviour {
         canWasd = true;
     }
 
-    public void Cutscene3()
+
+    public void Cutscene3()//title
     {
+        playerAnim.SetTrigger("FetchTrigger");
+        for (int i = 0; i < srs.Length; i++)
+        {
+            srs[i].material.DOFade(0, fadeTime);
+        }
+        player.GetComponent<SpriteRenderer>().material.DOFade(0, fadeTime).OnComplete(()=>SetActiveShow(title));
+    }
+
+    public void OnFlowerTrigger()
+    {
+        SetActiveShow(e2);
+        canE2 = true;
     }
 
     public void LoadScene()
@@ -106,16 +135,19 @@ public class UIInMain : MonoBehaviour {
     }
 
 
-    public void SetActiveShow(Image img)
+    void SetActiveShow(Image img)
     {
         img.DOFade(0, 0).OnComplete(()=> img.gameObject.SetActive(true));
         img.DOFade(1, fadeTime);
     }
 
-    public void SetActiveHide(Image img)
+    void SetActiveHide(Image img)
     {
         img.DOFade(0, fadeTime).OnComplete(() => img.gameObject.SetActive(false));
     }
 
+    void SetAllActive(bool active)
+    {
+    }
 }
 
