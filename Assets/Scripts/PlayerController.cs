@@ -60,9 +60,12 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                holdObject = pickObject.GetComponent<Pickup>().PickupIt();
-                pickObject.transform.SetParent(handPoint);
-                pickObject.transform.localPosition = Vector3.zero;
+                holdObject = pickObject.GetComponent<InteractivityObject>().PressE();
+                if (holdObject != 0)
+                {
+                    pickObject.transform.SetParent(handPoint);
+                    pickObject.transform.localPosition = Vector3.zero;
+                }
             }
         }
     }
