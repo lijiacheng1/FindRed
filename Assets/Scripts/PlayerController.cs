@@ -12,8 +12,23 @@ public class PlayerController : MonoBehaviour {
     //trigger
     bool sleepCryTrigger = false;
 
-	// Use this for initialization
-	void Start () {
+    public static PlayerController instance = null;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    // Use this for initialization
+    void Start () {
         rig = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
