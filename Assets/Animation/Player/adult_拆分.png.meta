@@ -4,6 +4,7 @@ TextureImporter:
   fileIDToRecycleName:
     21300000: "adult_\u62C6\u5206_0"
     21300002: "adult_\u62C6\u5206_1"
+    21300004: "adult_\u62C6\u5206_2"
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -101,11 +102,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 940
-        y: 238
+        y: 244
         width: 160
         height: 543
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -124,14 +125,34 @@ TextureImporter:
         y: 236
         width: 160
         height: 545
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: aac9170c38fb4cb40b680b1790879caa
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "adult_\u62C6\u5206_2"
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 198
+        width: 956
+        height: 817
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 810fb96a60eb96148af06303163807ac
       vertices: []
       indices: 
       edges: []

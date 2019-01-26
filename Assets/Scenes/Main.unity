@@ -205,6 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 181a33671705c1e488b590851f0a83cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  title: {fileID: 467083790}
 --- !u!114 &241741400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -565,7 +566,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 241741399}
-        m_MethodName: LoadScene
+        m_MethodName: Cutscene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
