@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 
     bool isWalking = false;
     bool sleepCryTrigger = false;
+    bool active = true;
 
     public static PlayerController instance = null;
     //按E的提示
@@ -21,6 +22,19 @@ public class PlayerController : MonoBehaviour
     public int holdObject;
     private bool canPress = false;
     private Collider2D colliderRem;
+
+    public bool Active
+    {
+        get
+        {
+            return active;
+        }
+
+        set
+        {
+            active = value;
+        }
+    }
 
     private void Awake()
     {
@@ -43,31 +57,34 @@ public class PlayerController : MonoBehaviour
     }
 	
 	void Update () {
-        var h = Input.GetAxis("Horizontal");
-        var v =Input.GetAxis("Vertical");
-        if (h!=0 || v!=0)
+        if (Active)
         {
-            if (h > 0)
-                sr.flipX = false;
-            else if(h < 0)
-                sr.flipX = true;
-            rig.MovePosition((Vector2)transform.position + new Vector2(h * Time.deltaTime, v * Time.deltaTime));
-            isWalking = true;
-        }
-        else
-        {
-            isWalking = false;
-        }
-        //如果CanPress为True，此时可以点击E进行交互
-        if (canPress)
-        {
-            if (Input.GetKeyDown(KeyCode.E))
+            var h = Input.GetAxis("Horizontal");
+            var v = Input.GetAxis("Vertical");
+            if (h != 0 || v != 0)
             {
-                holdObject = colliderRem.GetComponent<InteractivityObject>().PressE();
-                if (holdObject != 0)
+                if (h > 0)
+                    sr.flipX = false;
+                else if (h < 0)
+                    sr.flipX = true;
+                rig.MovePosition((Vector2)transform.position + new Vector2(h * Time.deltaTime, v * Time.deltaTime));
+                isWalking = true;
+            }
+            else
+            {
+                isWalking = false;
+            }
+            //如果CanPress为True，此时可以点击E进行交互
+            if (canPress)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
                 {
-                    colliderRem.transform.SetParent(handPoint);
-                    colliderRem.transform.localPosition = Vector3.zero;
+                    holdObject = colliderRem.GetComponent<InteractivityObject>().PressE();
+                    if (holdObject != 0)
+                    {
+                        colliderRem.transform.SetParent(handPoint);
+                        colliderRem.transform.localPosition = Vector3.zero;
+                    }
                 }
             }
         }
@@ -92,5 +109,10 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         canPress = false;
+    }
+
+    public void SetFlipX(bool isLeft)
+    {
+        sr.flipX = isLeft;
     }
 }

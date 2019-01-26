@@ -13,9 +13,9 @@ public class UIInMain : MonoBehaviour {
     public Image e2;
     public Transform environment;
     public Transform playerCutscene;
-    public Transform player;
     public Transform mask1;
     public Transform mask2;
+    public PlayerController player;
 
     Animator playerCutsceneAnim;
     Animator playerAnim;
@@ -121,6 +121,8 @@ public class UIInMain : MonoBehaviour {
     public void Cutscene3()//title
     {
         playerAnim.SetTrigger("FetchTrigger");
+        player.Active = false;
+        //player.SetFlipX(false);
         for (int i = 0; i < srs.Length; i++)
         {
             srs[i].material.DOFade(0, fadeTime);
@@ -131,6 +133,7 @@ public class UIInMain : MonoBehaviour {
                 title.gameObject.SetActive(true);
                 title.DOFade(1, fadeTime);
                 GameCtrl.instance.ChangeScene("Level1", 4);
+                player.Active = true;
             });
         });
     }

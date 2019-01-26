@@ -434,9 +434,9 @@ MonoBehaviour:
   e2: {fileID: 478395322}
   environment: {fileID: 2130037267}
   playerCutscene: {fileID: 1994580409}
-  player: {fileID: 946459491}
   mask1: {fileID: 2014508122}
   mask2: {fileID: 693883035}
+  player: {fileID: 1973171622}
   test: 0
 --- !u!114 &241741400
 MonoBehaviour:
@@ -1098,7 +1098,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1443972208826964, guid: 3e973c5d3e326f44a9d3b9cb2ae20a46, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e973c5d3e326f44a9d3b9cb2ae20a46, type: 2}
@@ -1230,11 +1230,6 @@ RectTransform:
   m_AnchoredPosition: {x: -663, y: -326}
   m_SizeDelta: {x: 427, y: 266}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!4 &946459491 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4127457355108070, guid: 3e973c5d3e326f44a9d3b9cb2ae20a46,
-    type: 2}
-  m_PrefabInternal: {fileID: 735871352}
 --- !u!1 &1125088451
 GameObject:
   m_ObjectHideFlags: 0
@@ -1677,6 +1672,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1443972208826964, guid: 3e973c5d3e326f44a9d3b9cb2ae20a46,
     type: 2}
   m_PrefabInternal: {fileID: 735871352}
+--- !u!114 &1973171622 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114520147110177816, guid: 3e973c5d3e326f44a9d3b9cb2ae20a46,
+    type: 2}
+  m_PrefabInternal: {fileID: 735871352}
+  m_Script: {fileID: 11500000, guid: d8ee0ab7a628b12478c1a718ba55b35a, type: 3}
 --- !u!70 &1973171627
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
