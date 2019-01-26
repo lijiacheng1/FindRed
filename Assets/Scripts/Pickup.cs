@@ -6,18 +6,11 @@ using UnityEngine.UI;
 public abstract class Pickup : MonoBehaviour {
     public Image pickupHint;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.GetComponent<PlayerController>() != null&&collision.GetComponent<PlayerController>().holdObject ==0)
+        if(collision.GetComponent<PlayerController>() != null&&collision.GetComponent<PlayerController>().HoldObject ==0)
         {
             pickupHint.gameObject.SetActive(true);
-        }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.GetComponent<PlayerController>() != null)
-        {
-            pickupHint.gameObject.SetActive(false);
         }
     }
     public virtual int PickupIt()

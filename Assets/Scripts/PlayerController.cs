@@ -14,10 +14,7 @@ public class PlayerController : MonoBehaviour
     bool sleepCryTrigger = false;
 
     public static PlayerController instance = null;
-    //记录手中的物体，是否可以拾起物体，可以拾起物体的collider2d
-    public int holdObject;
-    private bool canPick = false;
-    private Collider2D pickObject;
+    public int HoldObject;
 
     private void Awake()
     {
@@ -55,16 +52,6 @@ public class PlayerController : MonoBehaviour
         {
             isWalking = false;
         }
-        //拾起物体
-        if (canPick)
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                holdObject = pickObject.GetComponent<Pickup>().PickupIt();
-                pickObject.transform.SetParent(handPoint);
-                pickObject.transform.localPosition = Vector3.zero;
-            }
-        }
     }
 
     private void LateUpdate()
@@ -74,20 +61,17 @@ public class PlayerController : MonoBehaviour
             anim.SetTrigger("sleepCryTrigger");
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.GetComponent<Pickup>() != null && holdObject == 0)
+        if (collision.GetComponent<Pickup>() != null && HoldObject == 0)
         {
-            canPick = true;
-            pickObject = collision;
-        }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.GetComponent<Pickup>() != null && holdObject == 0)
-        {
-            canPick = false;
-            pickObject = null;
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Debug.Log("jianqilai");
+                HoldObject = collision.GetComponent<Pickup>().PickupIt();
+                collision.transform.SetParent(handPoint);
+                collision.transform.localPosition = Vector3.zero;
+            }
         }
     }
 }

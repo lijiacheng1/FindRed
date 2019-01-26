@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Magnet : MonoBehaviour{
-    private PlayerController player;
-    private void Start()
+public class Magnet : Pickup {
+
+    public override int PickupIt()
     {
-        player = PlayerController.instance;
+        return (int)GameCtrl.ObjectList.Magent;
     }
 }
