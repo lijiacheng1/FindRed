@@ -5,8 +5,8 @@ using UnityEngine;
 public class AudioController : MonoBehaviour {
 
     public static AudioController instance = null;
-    public AudioSource background;
-    public AudioSource sudden;
+    AudioSource background;
+    AudioSource sudden;
 
     private void Awake()
     {
