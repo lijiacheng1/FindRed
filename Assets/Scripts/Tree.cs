@@ -29,7 +29,7 @@ public class Tree : MonoBehaviour,InteractivityObject
         if (pressRem)
         {
             leaf.SetActive(true);
-            Vector3[] runPath = { new Vector3(0, 0, 0) };
+            Vector3[] runPath = { new Vector3(-2.21f, 0.32f, 0) };
             leaf.transform.DOPath(runPath, 2f);
         }
         if (!pressRem)

@@ -23,6 +23,7 @@ public class Thermometer : MonoBehaviour, InteractivityObject
     {
         if (canPress == true)
         {
+            canPress = false;
             tree.ChangeColor();
             GameCtrl.instance.PlayMusic(new Vector3(0, 0, 0), sounds.musicList[6]);
             anim.SetBool("Press", true);
