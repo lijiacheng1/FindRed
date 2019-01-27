@@ -34,7 +34,7 @@ public class Magnet : MonoBehaviour{
                 {
                     runEnd = true;
                 }
-                if (runIndex < runPath.Length)
+                if (runIndex < runPath.Length-1)
                 {
                     running = true;
                     anim.SetBool("Run", true);

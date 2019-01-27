@@ -14,6 +14,7 @@ public class WindMill : MonoBehaviour {
     public SoundCtrl sounds;
     private float timer;
     private float cycle=1;
+    private bool opened = false;
     private void Start()
     {
         tr = GetComponent<Transform>();
@@ -34,7 +35,11 @@ public class WindMill : MonoBehaviour {
         {
             timer += Time.deltaTime;
             tr.rotation = Quaternion.Euler(0, 0, (timer%cycle/cycle)*360);
-            thermometer.Open();
+            if (!opened)
+            {
+                thermometer.Open();
+                opened = true;
+            }
         }
     }
 }

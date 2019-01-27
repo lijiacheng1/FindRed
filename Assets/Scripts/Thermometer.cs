@@ -7,7 +7,7 @@ public class Thermometer : MonoBehaviour, InteractivityObject
     //百叶箱温度变化，改变树
     public Tree tree;
     private Animator anim;
-    private bool canPress;
+    private bool canPress = false;
     public SoundCtrl sounds;
     private void Start()
     {
