@@ -84,6 +84,7 @@ public class PlayerController : MonoBehaviour
                     holdObject = colliderRem.GetComponent<InteractivityObject>().PressE();
                     if (holdObject != 0)
                     {
+                        anim.SetTrigger("FetchTrigger2");
                         canPress = false;
                         pressHint.Hide();
                         colliderRem.transform.SetParent(handPoint);
