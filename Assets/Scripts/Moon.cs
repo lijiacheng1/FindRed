@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Moon : MonoBehaviour {
     private Animator anim;
+    public Flower flower;
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -16,5 +17,11 @@ public class Moon : MonoBehaviour {
     {
         yield return new WaitForSeconds(2f);
         anim.SetBool("Trans", true);
+        flower.gameObject.SetActive(true);
+        flower.Bloom();
+        Debug.Log(true);
+        yield return new WaitForSeconds(2f);
+        anim.SetBool("Trans", false);
+        Debug.Log(false);
     }
 }
