@@ -68,9 +68,15 @@ public class PlayerController : MonoBehaviour
             if (h != 0 || v != 0)
             {
                 if (h > 0)
+                {
                     sr.flipX = false;
+                    handPoint.localPosition = new Vector3(1.37f, 0, 0);
+                }
                 else if (h < 0)
+                {
                     sr.flipX = true;
+                    handPoint.localPosition = new Vector3(-1.37f, 0, 0);
+                }
                 rig.MovePosition((Vector2)transform.position + new Vector2(h * Time.deltaTime, v * Time.deltaTime));
                 isWalking = true;
             }
