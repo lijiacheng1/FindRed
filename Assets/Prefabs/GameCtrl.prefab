@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4809439573276348}
   - component: {fileID: 114829242150759078}
+  - component: {fileID: 114353902655164518}
   m_Layer: 0
   m_Name: GameCtrl
   m_TagString: Untagged
@@ -134,6 +135,17 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114353902655164518
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1025595740514212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0d73cb709aedaa4b88ae5dbf446f49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114409384138572290
 MonoBehaviour:
   m_ObjectHideFlags: 1
