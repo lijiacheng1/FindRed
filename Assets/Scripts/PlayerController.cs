@@ -119,6 +119,12 @@ public class PlayerController : MonoBehaviour
     {
         canPress = false;
     }
+    //放下物品函数
+    public void Release(float time)
+    {
+        holdObject = 0;
+        Destroy(handPoint.transform.GetChild(0).gameObject,time);
+    }
 
     public void SetFlipX(bool isLeft)
     {

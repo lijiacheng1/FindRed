@@ -1,20 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Stamp : MonoBehaviour,InteractivityObject {
 
-    public GameObject moon;
+    public Moon moon;
     private Transform tr;
-    private float dist;
     void Start()
     {
         tr = GetComponent<Transform>();
     }
-    private void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        dist = Vector3.Distance(moon.transform.position, tr.position);
-        if (dist <= 1.5)
+        if(collision.GetComponent<Moon>() != null)
         {
             FlyToMoon();
         }
@@ -25,6 +24,9 @@ public class Stamp : MonoBehaviour,InteractivityObject {
     }
     private void FlyToMoon()
     {
-
+        tr.transform.rotation = Quaternion.Euler(0, 0, 270);
+        transform.DOPath(new Vector3[] {new Vector3(0.24f, 4.26f,0) }, 2f);
+        PlayerController.instance.Release(2);
+        moon.Trans();
     }
 }

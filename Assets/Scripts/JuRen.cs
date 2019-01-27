@@ -10,8 +10,9 @@ public class JuRen : MonoBehaviour {
         anim = GetComponent<Animator>();
     }
     private void Update()
-    { 
-        //= PlayerController.instance.transform.position;
+    {
+        var vct3Rem = PlayerController.instance.transform.position - eye.transform.position;
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
