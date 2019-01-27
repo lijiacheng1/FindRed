@@ -15,13 +15,12 @@ public class Moon : MonoBehaviour {
     }
     IEnumerator TransTrue()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         anim.SetBool("Trans", true);
+        yield return new WaitForSeconds(2f);
         flower.gameObject.SetActive(true);
         flower.Bloom();
-        Debug.Log(true);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
         anim.SetBool("Trans", false);
-        Debug.Log(false);
     }
 }
