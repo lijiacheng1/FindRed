@@ -17,6 +17,8 @@ public class UIInMain : MonoBehaviour {
     public Transform mask1;
     public Transform mask2;
     public PlayerController player;
+    public AudioClip flowerSound;
+    public AudioClip getupSound;
 
     Animator playerCutsceneAnim;
     Animator playerAnim;
@@ -82,7 +84,7 @@ public class UIInMain : MonoBehaviour {
         if (test)
         {
             test = false;
-            OnFlowerTrigger();
+            OnFlowerTrigger(true);
         }
     }
 
@@ -102,6 +104,7 @@ public class UIInMain : MonoBehaviour {
     {
         flower.GetComponent<SpriteRenderer>().material.DOFade(0, 0).OnComplete(()=> {
             flower.gameObject.SetActive(true);
+            AudioController.instance.PlaySudden(flowerSound);
             flower.GetComponent<SpriteRenderer>().material.DOFade(1, fadeTime).OnComplete(() => {
                 SetActiveShow(e);
                 canE = true;
@@ -112,6 +115,7 @@ public class UIInMain : MonoBehaviour {
     public void Cutscene2()//getup
     {
         playerCutsceneAnim.SetTrigger("GetUp");
+        AudioController.instance.PlaySudden(getupSound);
     }
 
     public void InputCutScene2()//get up end
@@ -146,10 +150,18 @@ public class UIInMain : MonoBehaviour {
         });
     }
 
-    public void OnFlowerTrigger()
+    public void OnFlowerTrigger(bool active)
     {
-        SetActiveShow(e2);
-        canE2 = true;
+        if (active)
+        {
+            SetActiveShow(e2);
+            canE2 = true;
+        }
+        else
+        {
+            SetActiveHide(e2);
+            canE2 = false;
+        }
     }
 
     public void LoadScene()
