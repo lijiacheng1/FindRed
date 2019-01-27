@@ -12,6 +12,7 @@ public class GameCtrl : MonoBehaviour {
         Magent,
         Flower,
         Stamp,
+        Leaf,
     }
     //实现白色遮挡的图片
     private Image mask;

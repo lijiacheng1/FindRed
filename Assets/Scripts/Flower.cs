@@ -5,6 +5,7 @@ using UnityEngine;
 public class Flower : MonoBehaviour,InteractivityObject{
     private float timer;
     private SpriteRenderer sr;
+    public SoundCtrl sounds;
     private Color lucency = new Color(1, 1, 1, 0);
     private void Awake()
     {
@@ -12,10 +13,12 @@ public class Flower : MonoBehaviour,InteractivityObject{
     }
     public void Bloom()
     {
+        GameCtrl.instance.PlayMusic(new Vector3(0, 0, 0), sounds.musicList[3]);
         StartCoroutine(ChangeColorIE());
     }
     public int PressE()
     {
+        GameCtrl.instance.PlayMusic(new Vector3(0, 0, 0), sounds.musicList[5]);
         return (int)GameCtrl.ObjectList.Flower;
     }
 

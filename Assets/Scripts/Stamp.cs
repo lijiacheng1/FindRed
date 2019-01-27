@@ -7,6 +7,7 @@ public class Stamp : MonoBehaviour,InteractivityObject {
 
     public Moon moon;
     private Transform tr;
+    public SoundCtrl sounds;
     void Start()
     {
         tr = GetComponent<Transform>();
@@ -20,6 +21,7 @@ public class Stamp : MonoBehaviour,InteractivityObject {
     }
     public int PressE()
     {
+        GameCtrl.instance.PlayMusic(new Vector3(0, 0, 0), sounds.musicList[4]);
         return (int)GameCtrl.ObjectList.Stamp;
     }
     private void FlyToMoon()
