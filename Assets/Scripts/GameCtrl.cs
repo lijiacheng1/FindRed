@@ -21,15 +21,7 @@ public class GameCtrl : MonoBehaviour {
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(this);
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
+        instance = this;
     }
     private void Start()
     {
@@ -67,6 +59,7 @@ public class GameCtrl : MonoBehaviour {
             mask.color = Color.Lerp(color2, color1, f / time);
             yield return new WaitForSeconds(0.05f);
         }
+        PlayerController.instance.Release(0.1f);
         this.transform.Find("Canvas").gameObject.SetActive(false);
     }
 }
