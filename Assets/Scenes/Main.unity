@@ -950,6 +950,11 @@ Prefab:
       propertyPath: pressHint
       value: 
       objectReference: {fileID: 372526458}
+    - target: {fileID: 114114446360003648, guid: 3e973c5d3e326f44a9d3b9cb2ae20a46,
+        type: 2}
+      propertyPath: speed
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e973c5d3e326f44a9d3b9cb2ae20a46, type: 2}
   m_IsPrefabAsset: 0

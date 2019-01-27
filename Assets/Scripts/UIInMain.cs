@@ -148,7 +148,7 @@ public class UIInMain : MonoBehaviour {
             title.DOFade(0.3f, 0).OnComplete(() => {
                 title.gameObject.SetActive(true);
                 title.DOFade(1, fadeTime);
-                GameCtrl.instance.ChangeScene("Level1", 5);
+                GameCtrl.instance.ChangeScene("JuRen", 5);
                 player.Active = true;
             });
         });
@@ -169,12 +169,7 @@ public class UIInMain : MonoBehaviour {
             canE2 = false;
         }
     }
-
-    public void LoadScene()
-    {
-        GameCtrl.instance.ChangeScene("JuRen", 1);
-    }
-
+   
 
     void SetActiveShow(Image img)
     {
