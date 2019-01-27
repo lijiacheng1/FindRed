@@ -5,7 +5,8 @@ using UnityEngine;
 public class Flower : MonoBehaviour,InteractivityObject{
     private float timer;
     private SpriteRenderer sr;
-    private void Start()
+    private Color lucency = new Color(1, 1, 1, 0);
+    private void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
     }
@@ -20,12 +21,10 @@ public class Flower : MonoBehaviour,InteractivityObject{
 
     IEnumerator ChangeColorIE()
     {
-        Color lucency = new Color(1, 1, 1, 0);
-        for (int i = 0; i <= 20; i++)
+        for (int i = 0; i <= 40; i++)
         {
-            sr.color = Color.Lerp(lucency, Color.white, (float)i / 20);
+            sr.color = Color.Lerp(lucency, Color.white, (float)(i / 40));
             yield return new WaitForSeconds(0.1f);
         }
-
     }
 }
