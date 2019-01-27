@@ -12,6 +12,7 @@ public class ButtonEAnim : MonoBehaviour {
     public void Start()
     {
         img = GetComponent<Image>();
+        Hide();
     }
     // Use this for initialization
     void OnEnable () {

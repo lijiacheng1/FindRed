@@ -17,12 +17,13 @@ public class PlayerController : MonoBehaviour
 
     public static PlayerController instance = null;
     //按E的提示
-    public Image pressHint;
+    public ButtonEAnim pressHint;
     //记录手中的物体、是否可以按。速度变量
     public int holdObject;
     private bool canPress = false;
     private Collider2D colliderRem;
-    public float speed=1;
+
+    public float speed = 1;
 
     public bool Active
     {
@@ -51,13 +52,15 @@ public class PlayerController : MonoBehaviour
     }
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         rig = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
     }
-	
-	void Update () {
+
+    void Update()
+    {
         if (Active)
         {
             var h = Input.GetAxis("Horizontal");
@@ -80,19 +83,13 @@ public class PlayerController : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    isWalking = false;
-                }
-                //如果CanPress为True，此时可以点击E进行交互
-                if (canPress)
-                {
-                    if (Input.GetKeyDown(KeyCode.E))
+                    holdObject = colliderRem.GetComponent<InteractivityObject>().PressE();
+                    if (holdObject != 0)
                     {
-                        holdObject = colliderRem.GetComponent<InteractivityObject>().PressE();
-                        if (holdObject != 0)
-                        {
-                            colliderRem.transform.SetParent(handPoint);
-                            colliderRem.transform.localPosition = Vector3.zero;
-                        }
+                        canPress = false;
+                        pressHint.Hide();
+                        colliderRem.transform.SetParent(handPoint);
+                        colliderRem.transform.localPosition = Vector3.zero;
                     }
                 }
             }
@@ -111,6 +108,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.GetComponent<InteractivityObject>() != null && holdObject == 0)
         {
+            pressHint.Show();
             canPress = true;
             colliderRem = collision;
         }
@@ -118,12 +116,13 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         canPress = false;
+        pressHint.Hide();
     }
     //放下物品函数
     public void Release(float time)
     {
         holdObject = 0;
-        Destroy(handPoint.transform.GetChild(0).gameObject,time);
+        Destroy(handPoint.transform.GetChild(0).gameObject, time);
     }
 
     public void SetFlipX(bool isLeft)
