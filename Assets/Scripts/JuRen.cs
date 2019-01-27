@@ -5,6 +5,7 @@ using UnityEngine;
 public class JuRen : MonoBehaviour {
     private Animator anim;
     public SpriteRenderer eye;
+    public SoundCtrl sounds;
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -18,6 +19,7 @@ public class JuRen : MonoBehaviour {
     {
         if(collision.GetComponent<PlayerController>() != null&&PlayerController.instance.holdObject == (int)GameCtrl.ObjectList.Flower)
         {
+            GameCtrl.instance.PlayMusic(new Vector3(0, 0, 0), sounds.musicList[2]);
             anim.SetBool("Sneeze", true);
         }
     }
