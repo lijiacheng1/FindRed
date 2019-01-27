@@ -34,9 +34,12 @@ public class Magnet : MonoBehaviour{
                 {
                     runEnd = true;
                 }
-                running = true;
-                anim.SetBool("Run", true);
-                RunAway();
+                if (runIndex < runPath.Length-1)
+                {
+                    running = true;
+                    anim.SetBool("Run", true);
+                    RunAway();
+                }
             }
         }
         if (tr.position == runPath[runIndex])
