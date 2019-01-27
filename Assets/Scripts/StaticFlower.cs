@@ -11,11 +11,17 @@ public class StaticFlower : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        UIInMain.instacne.OnFlowerTrigger(true);
+        //Debug.LogError(111);
+        if (collision.gameObject.tag.Equals("Player"))
+        {
+            //Debug.LogError(222);
+            UIInMain.instacne.OnFlowerTrigger(true);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        UIInMain.instacne.OnFlowerTrigger(false);
+        if (collision.gameObject.tag.Equals("Player"))
+            UIInMain.instacne.OnFlowerTrigger(false);
     }
 }
