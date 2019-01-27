@@ -129,6 +129,7 @@ public class PlayerController : MonoBehaviour
 
     public void SetFlipX(bool isLeft)
     {
-        sr.flipX = isLeft;
+        if (sr != null)
+            sr.flipX = isLeft;
     }
 }

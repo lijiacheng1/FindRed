@@ -19,6 +19,7 @@ public class UIInMain : MonoBehaviour {
     public PlayerController player;
     public AudioClip flowerSound;
     public AudioClip getupSound;
+    public ButtonEAnim bea;
 
     Animator playerCutsceneAnim;
     Animator playerAnim;
@@ -65,7 +66,8 @@ public class UIInMain : MonoBehaviour {
         if (canE && Input.GetKeyDown(KeyCode.E))
         {
             canE = false;
-            SetActiveHide(e);
+            bea.Hide();
+            //SetActiveHide(e);
             Cutscene2();
         }
         if (canWasd && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) ||
@@ -78,7 +80,8 @@ public class UIInMain : MonoBehaviour {
         if (canE2 && Input.GetKeyDown(KeyCode.E))
         {
             canE2 = false;
-            SetActiveHide(e2);
+            //SetActiveHide(e2);
+            bea.Hide();
             Cutscene3();
         }
         if (test)
@@ -106,7 +109,8 @@ public class UIInMain : MonoBehaviour {
             flower.gameObject.SetActive(true);
             AudioController.instance.PlaySudden(flowerSound);
             flower.GetComponent<SpriteRenderer>().material.DOFade(1, fadeTime).OnComplete(() => {
-                SetActiveShow(e);
+                //SetActiveShow(e);
+                bea.Show();
                 canE = true;
             });
         });
@@ -154,19 +158,21 @@ public class UIInMain : MonoBehaviour {
     {
         if (active)
         {
-            SetActiveShow(e2);
+            bea.Show();
+            //SetActiveShow(e2);
             canE2 = true;
         }
         else
         {
-            SetActiveHide(e2);
+            bea.Hide();
+            //SetActiveHide(e2);
             canE2 = false;
         }
     }
 
     public void LoadScene()
     {
-        GameCtrl.instance.ChangeScene("Level1", 1);
+        GameCtrl.instance.ChangeScene("JuRen", 1);
     }
 
 

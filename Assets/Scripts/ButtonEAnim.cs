@@ -12,7 +12,8 @@ public class ButtonEAnim : MonoBehaviour {
     public void Start()
     {
         img = GetComponent<Image>();
-        Hide();
+        //Hide();
+        img.gameObject.SetActive(false);
     }
     // Use this for initialization
     void OnEnable () {
