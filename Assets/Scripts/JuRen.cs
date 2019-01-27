@@ -21,6 +21,12 @@ public class JuRen : MonoBehaviour {
         {
             GameCtrl.instance.PlayMusic(new Vector3(0, 0, 0), sounds.musicList[2]);
             anim.SetBool("Sneeze", true);
+            StartCoroutine(ChangeScene());
         }
+    }
+    IEnumerator ChangeScene()
+    {
+        yield return new WaitForSeconds(4f);
+        GameCtrl.instance.ChangeScene("ShuYe", 1f);
     }
 }

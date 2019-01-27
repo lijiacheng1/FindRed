@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     private bool canPress = false;
     private Collider2D colliderRem;
 
-    public float speed = 1;
+    public float speed = 5;
 
     public bool Active
     {
@@ -40,15 +40,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
+        instance = this;
     }
 
     // Use this for initialization
@@ -77,7 +69,7 @@ public class PlayerController : MonoBehaviour
                     sr.flipX = true;
                     handPoint.localPosition = new Vector3(-1.37f, 0, 0);
                 }
-                rig.MovePosition((Vector2)transform.position + new Vector2(h * Time.deltaTime, v * Time.deltaTime));
+                rig.MovePosition((Vector2)transform.position + new Vector2(h * speed *Time.deltaTime, v *speed* Time.deltaTime));
                 isWalking = true;
             }
             else
@@ -128,7 +120,10 @@ public class PlayerController : MonoBehaviour
     public void Release(float time)
     {
         holdObject = 0;
-        Destroy(handPoint.transform.GetChild(0).gameObject, time);
+        if(handPoint.transform.GetChild(0) != null)
+        {
+            Destroy(handPoint.transform.GetChild(0).gameObject, time);
+        }
     }
 
     public void SetFlipX(bool isLeft)
