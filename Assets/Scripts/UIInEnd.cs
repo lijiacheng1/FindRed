@@ -66,5 +66,20 @@ public class UIInEnd : MonoBehaviour {
         yield return new WaitForSeconds(2);
         playerCutsceneAnim.SetTrigger("Start");
         AudioController.instance.PlayBackground(back);
+        yield return new WaitForSeconds(5);
+        Cutscene2();
+    }
+
+    public void Cutscene2()//title
+    {
+        mask1.gameObject.SetActive(false);
+        for (int i = 0; i < srs.Length; i++)
+        {
+            srs[i].material.DOFade(0, fadeTime);
+        }
+        title.DOFade(0.3f, 0).OnComplete(() => {
+            title.gameObject.SetActive(true);
+            title.DOFade(1, fadeTime);
+        });
     }
 }
