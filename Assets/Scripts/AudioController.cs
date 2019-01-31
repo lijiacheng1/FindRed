@@ -22,10 +22,11 @@ public class AudioController : MonoBehaviour {
         sudden = gameObject.AddComponent<AudioSource>();
     }
 
-    public void PlayBackground(AudioClip ac)
+    public void PlayBackground(AudioClip ac, float time=0f)
     {
         background.clip = ac;
         background.Play();
+        background.time = time;
     }
 
 

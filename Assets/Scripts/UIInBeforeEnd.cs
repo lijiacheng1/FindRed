@@ -52,7 +52,7 @@ public class UIInBeforeEnd : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         playerCutsceneAnim.SetTrigger("Start");
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(7);
         GameCtrl.instance.ChangeScene("End", 1);
     }
 }

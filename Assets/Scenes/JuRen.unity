@@ -157,6 +157,11 @@ Prefab:
       propertyPath: pressHint
       value: 
       objectReference: {fileID: 392525906}
+    - target: {fileID: 114114446360003648, guid: 3e973c5d3e326f44a9d3b9cb2ae20a46,
+        type: 2}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e973c5d3e326f44a9d3b9cb2ae20a46, type: 2}
   m_IsPrefabAsset: 0
@@ -415,8 +420,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 575f3d834d3189f4085e4d141a5b605a, type: 3}
+  m_SortingOrder: 34
+  m_Sprite: {fileID: 21300000, guid: cac088b0671ef7845a86d247df83a69d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
@@ -450,19 +455,19 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.63023114, y: -0.54283166}
+  m_UsedByComposite: 1
+  m_Offset: {x: 0.7557788, y: -0.69348836}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 19.2, y: 10.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.0290322, y: 1.0894003}
+  m_Size: {x: 2.0792515, y: 0.6876497}
   m_EdgeRadius: 0
 --- !u!114 &392525906 stripped
 MonoBehaviour:
@@ -990,12 +995,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicList:
   - {fileID: 8300000, guid: 3a2c1b482cf879041a6c43be110c81d7, type: 3}
-  - {fileID: 8300000, guid: 7441dfeab3e717a409298c1c2687229f, type: 3}
+  - {fileID: 8300000, guid: 91a9960f642d5114286aa8cb7562523f, type: 3}
   - {fileID: 8300000, guid: c7e8ecea44eb34046a4ac8050c3c32a5, type: 3}
   - {fileID: 8300000, guid: 8d9479504b9efd94f9aa03f04e336b75, type: 3}
   - {fileID: 8300000, guid: aaa42137b0eeaa0458e4f57310176931, type: 3}
   - {fileID: 8300000, guid: 481a5b4d729427944880545329391a71, type: 3}
-  - {fileID: 8300000, guid: 396a267d2790c0a479a2da1aeef7155f, type: 3}
+  - {fileID: 8300000, guid: bb02d245c994cdb4cb0ab1df7c8bef3c, type: 3}
   - {fileID: 8300000, guid: c22b5c4072d78cb47b4e3cccfc48ee43, type: 3}
 --- !u!4 &1774822461
 Transform:

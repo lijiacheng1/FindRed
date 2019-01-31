@@ -356,7 +356,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.17606711, y: -0.022879362}
+  m_Offset: {x: 0.1460126, y: -0.45796514}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -367,7 +367,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.9634762, y: 1.5597062}
+  m_Size: {x: 0.99855196, y: 1.0311952}
   m_EdgeRadius: 0
 --- !u!114 &421236436
 MonoBehaviour:
@@ -1358,7 +1358,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: fd45125bef7a6124ea9640c817b064d1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1446,6 +1446,11 @@ Prefab:
       propertyPath: pressHint
       value: 
       objectReference: {fileID: 667816147}
+    - target: {fileID: 114114446360003648, guid: 3e973c5d3e326f44a9d3b9cb2ae20a46,
+        type: 2}
+      propertyPath: speed
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e973c5d3e326f44a9d3b9cb2ae20a46, type: 2}
   m_IsPrefabAsset: 0

@@ -19,7 +19,7 @@ public class JuRen : MonoBehaviour {
     {
         if(collision.GetComponent<PlayerController>() != null&&PlayerController.instance.holdObject == (int)GameCtrl.ObjectList.Flower)
         {
-            GameCtrl.instance.PlayMusic(new Vector3(0, 0, 0), sounds.musicList[2]);
+            GameCtrl.instance.PlayMusic(new Vector3(0, 0, 0), sounds.musicList[1]);
             anim.SetBool("Sneeze", true);
             StartCoroutine(ChangeScene());
         }

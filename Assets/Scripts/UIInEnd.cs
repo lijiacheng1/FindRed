@@ -63,10 +63,9 @@ public class UIInEnd : MonoBehaviour {
 
     IEnumerator Cutscene1a()
     {
-        yield return new WaitForSeconds(2);
         playerCutsceneAnim.SetTrigger("Start");
         AudioController.instance.PlayBackground(back);
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(7);
         Cutscene2();
     }
 

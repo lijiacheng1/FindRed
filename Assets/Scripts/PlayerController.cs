@@ -126,6 +126,16 @@ public class PlayerController : MonoBehaviour
             Destroy(handPoint.transform.GetChild(0).gameObject, time);
         }
     }
+    //手持印章时
+    public void HoldStamp()
+    {
+        anim.SetTrigger("FetchTrigger3");
+    }
+    //放下印章
+    public void ReleaseStamp()
+    {
+        anim.SetBool("Fetch3", true);
+    }
 
     public void SetFlipX(bool isLeft)
     {
